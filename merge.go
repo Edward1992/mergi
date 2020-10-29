@@ -52,8 +52,8 @@ func Merge(template string, imgs []image.Image) (image.Image, error) {
 		if i <= yCount {
 			height += tmp.Bounds().Max.Y
 		}
-		if tokens[i] == top {
-			width += tmp.Bounds().Max.X
+		if width < tmp.Bounds().Max.X {
+			width = tmp.Bounds().Max.X
 		}
 	}
 
