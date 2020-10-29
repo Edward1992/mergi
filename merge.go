@@ -4,6 +4,7 @@ import (
 	"errors"
 	"fmt"
 	"image"
+	"image/color"
 	"image/draw"
 	"strings"
 )
@@ -58,6 +59,13 @@ func Merge(template string, imgs []image.Image) (image.Image, error) {
 
 	b := image.Rect(0, 0, width, height)
 	resImage := image.NewRGBA(b)
+
+	for i := 0; i < width; i++ {
+		for j := 0; j < height; j++ {
+			resImage.Set(i,j, color.White)
+		}
+	}
+
 	// T drawing
 	draw.Draw(resImage, b, first, image.ZP, draw.Src)
 
